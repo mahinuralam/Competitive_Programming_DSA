@@ -1,0 +1,24 @@
+RIGHT SHIFT :
+
+5 << 1
+
+Here << is the symbol of right shift
+1 is the number of right shifts
+It will result 5 * 2^i [ i = 1]
+
+Again, 5 << 4 = 60 
+
+Because, 2^4 = 16*5 = 60
+
+
+LEFT SHIFT :
+
+8 >> 2
+
+Here >> is the symbol of left shift
+2 is the number of right shifts
+It will result 8 /  2^i [ i = 2]
+
+Again, 100 << 5 = 32
+
+Because, 2^5 =  100 / 32 = 3
