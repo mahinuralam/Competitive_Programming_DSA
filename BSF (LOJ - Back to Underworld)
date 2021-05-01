@@ -1,0 +1,87 @@
+vector <int> v[100000] ;
+ll vis[100000];
+ll l = 0, w = 0,ans=0;
+
+
+void a()
+{
+    for(int i=0;i<=100000;i++)
+    {
+        v[i].clear();
+    }
+}
+
+void bfs(int n)
+{
+    queue <int> q;
+    q.push(n);
+    vis[ n ] = 1;
+    w++;
+    while(!q.empty())
+    {
+        ll p = q.front();
+        q.pop();
+
+        for(int i = 0; i < v[ p ].size() ; i++)
+        {
+            ll z = v[p][i];
+
+            if(vis[ z ] == 0)
+            {
+                q.push(z);
+
+                if(vis[p]==1)
+                {
+                    vis[z]=2;
+                    l++;
+                }
+                else
+                {
+                    vis[z]=1;
+                    w++;
+                }
+            }
+        }
+    }
+}
+
+int main()
+{
+    ll t,q=0;
+    cin>>t;
+    while(t--)
+    {
+        a();
+        memset(vis,0,sizeof(vis));
+        l = 0, w = 0;
+        ans=0;
+        ll n;
+        cin>>n;
+
+        for(int i=0; i<n; i++)
+        {
+            ll x,y;
+            cin>>x>>y;
+            v[x].push_back(y);
+            v[y].push_back(x);
+        }
+
+
+        for(int i=0;i<=100000;i++)
+        {
+            if(!v[i].empty()&&vis[i]==0)
+            {
+                l = 0, w = 0;
+
+                bfs(i);
+
+                ans+=max(l,w);
+            }
+        }
+
+
+        cout<<"Case "<<++q<<": "<<ans<<endl;
+    }
+
+    return 0;
+}
