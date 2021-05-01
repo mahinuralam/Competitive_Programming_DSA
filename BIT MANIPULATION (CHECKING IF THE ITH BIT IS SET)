@@ -1,0 +1,25 @@
+//CHECKING IF THE ITH BIT IS SET
+
+int main()
+{
+    ll n,i;
+    cin>>n>>i;
+
+    int f=1;
+
+    f = f << i;
+
+    int res = n & f;
+
+    if( res ==0 )
+    {
+        cout<<"FALSE"<<endl;
+    }
+    else
+    {
+        cout<<"TRUE"<<endl;
+    }
+
+
+    return 0;
+}
