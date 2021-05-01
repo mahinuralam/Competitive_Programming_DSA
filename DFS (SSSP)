@@ -1,0 +1,17 @@
+//Storing all distances from the root node
+ 
+void dfs(int node, int d)
+{
+    vis[node] = 1;
+    dis[node] = d;
+    
+    for(int child : adj[n])
+    {
+        if(vis[child]==0)
+        {
+            dfs(child, dis[node] + 1);
+        }
+    }
+}
+ 
+//Call dfs(1,0);
