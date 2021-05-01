@@ -1,0 +1,14 @@
+
+
+void dfs(ll child)
+{
+    vis[child]=1;
+    
+    for(int child : adj[n])
+    {
+        if(vis[child] == 0)
+        {
+            dfs(child);
+        }
+    }
+}
