@@ -1,0 +1,26 @@
+//CHECKING THE NUMBER OF SET BITS
+// OLog(n)
+
+int main()
+{
+    ll n,cnt=0;
+    cin>>n;
+
+    while(n>0)
+    {
+        if((n&1)>0)
+        {
+            cnt++;
+        }
+
+        n = n >> 1;
+    }
+
+    cout<<cnt<<endl;
+
+
+
+
+
+    return 0;
+}
