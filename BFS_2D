@@ -1,0 +1,44 @@
+ll dis[1001][1001],vis[1001][1001];
+int dx[]={+0,+0,+1,-1,-1,+1,-1,+1};   // Kings Moves
+int dy[]={-1,+1,+0,+0,+1,+1,-1,-1};  // Kings Moves
+
+int X[]={0,1,0,-1};   // adjacent Moves
+int Y[]={-1,0,1,0};  // adjacent Moves
+
+
+
+bool isValid(ll x,ll y)
+{
+    if(x<0||x>=r||y<0||y>=c) return false;
+    if(vis[x][y]==true) return false;
+    return true;
+}
+
+
+void bfs_2d(ll x,ll y)
+{
+    queue<pair<ll,ll> >q;
+    q.push({x,y});
+    vis[x][y]=1;
+    dis[x][y]=0;
+
+    while(!q.empty())
+    {
+        ll xx = q.front().first;
+        ll yy = q.front().second;
+        q.pop();
+
+        for(int i=0;i<8;i++)
+        {
+            if(isValid(xx+dx[i],yy+dy[i]))
+            {
+                ll newX = xx + dx[i];
+                ll newY = yy + dy[i];
+
+                q.push({newX,newY});
+                vis[newX][newY] = 1;
+                dis[newX][newY] = dis[xx][yy]+1;
+            }
+        }
+    }
+}
