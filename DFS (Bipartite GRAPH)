@@ -1,0 +1,29 @@
+vector<ll>adj[10000];
+ll vis[10000],col[10000];
+ 
+bool dfs(ll x,ll y)
+{
+   vis[x]=1;
+   col[x]=y;
+ 
+   for(int child : adj[x])
+   {
+       if(vis[child]==0)
+       {
+           bool r = dfs(child,y^1);
+           if(r==false)
+           {
+               return false;
+           }
+       }
+       else
+       {
+           if(col[x]==col[child])
+           {
+               return false;
+           }
+       }
+   }
+ 
+ return true;
+}
