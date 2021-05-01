@@ -1,0 +1,26 @@
+#define MX 100010
+bool vis[MX];
+vector<int>adj[MX];
+ 
+int dfs(int x)
+{
+   vis[x]=true;
+   stack<int>st;
+   st.push(x);
+   while(!st.empty())
+   {
+       int t=st.top();
+       st.pop();
+       for(int i=0; i<adj[t].size(); i++)
+       {
+           int child=adj[t][i];
+           if(!vis[child])
+           {
+               vis[child]=true;
+               st.push(child);
+           }
+       }
+   }
+ 
+   return 0;
+}
