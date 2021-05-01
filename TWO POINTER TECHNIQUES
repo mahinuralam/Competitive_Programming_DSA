@@ -1,0 +1,23 @@
+//The consecutive sum of number without nested loop 
+
+
+    for(int i=1;i<=t;i++)
+    {
+        cin>>ar[i];
+    }
+    for(int i=1;i<=t;i++)
+    {
+        ar2[i]=((ar[i]*(ar[i]+1))/2.0)/ar[i];
+    }
+    double sm=0,mx=0;
+    for(int i=1;i<=l;i++)
+    {
+        sm+=ar2[i];
+    }
+    mx=sm;
+    for(int i=l+1;i<=t;i++)
+    {
+        sm+=ar2[i];
+        sm-=ar2[i-l];
+        mx=max(mx,sm);
+    }
