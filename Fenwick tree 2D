@@ -1,0 +1,108 @@
+#include<bits/stdc++.h>
+#define FAST ios_base::sync_with_stdio(false); cin.tie(0), cout.tie(0);
+#define ll long long
+//#define endl '\n'
+using namespace std;
+ 
+void init_code(){
+    FAST;
+    #ifndef ONLINE_JUDGE
+    freopen("input1.txt", "r", stdin);
+    freopen("output10.txt", "w", stdout);
+    #endif 
+}
+
+const ll sz = 1040;
+
+//2D Fenwick
+
+ll fre[sz][sz], ar[sz][sz];
+ll n;
+
+void update(ll x, ll y, ll val){
+    ++x;++y;
+    for(ll i=x; i<=n; i += (i&(-i))){
+
+        for(ll j=y; j<=n ; j += (j&(-j))){
+
+            fre[i][j] += val;
+        }
+    }
+}
+
+ll query(ll x, ll y){
+    ++x;++y;
+    ll sum=0;
+    for(ll i=x; i>0; i -= (i&(-i))){
+
+        for(ll j=y; j>0 ; j -= (j&(-j))){
+
+            sum += fre[i][j];
+        }
+    }
+
+    return sum;
+}
+
+
+ll areaSum(ll x1, ll y1, ll x2, ll y2){
+
+    ll ans = query(x2, y2)
+    - query(x2, y1-1) - query(x1-1, y2)
+    + query(x1-1, y1-1);
+    //cout<<ans<<endl;
+
+    return ans;
+
+}
+
+int main()
+{
+    //init_code();
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%lld",&n);
+        //cout<<n<<endl;
+        memset(fre, 0, sizeof(fre));
+        memset(ar, 0, sizeof(ar));      
+        //cout<<n<<" "<<sz<<endl;
+        char ch[10];
+
+        while(scanf("%s",&ch)){
+
+            ll a, b, val, ans = 0, x1, x2, y1, y2;
+            
+            if(!strcmp(ch,"SUM")){
+                
+                scanf("%lld%lld%lld%lld",&x1,&y1,&x2,&y2);
+                //cout<<ch[0]<<endl;
+
+                ll ans = areaSum(x1, y1, x2, y2);
+                printf("%lld\n",ans);
+
+            }
+            else if(!strcmp(ch,"SET")){
+
+                scanf("%lld%lld%lld",&a,&b,&val);
+                //cout<<ch[1]<<endl;
+
+                update(a, b, -ar[a][b]+val);
+                ar[a][b]=val;
+
+            }
+            else {
+
+                break;
+
+            }
+
+        }
+        printf("\n");
+        
+    }
+        
+    
+    return 0;
+}
