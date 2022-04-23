@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+#define FAST ios_base::sync_with_stdio(false); cin.tie(0), cout.tie(0);
+#define ll long long
+#define MOD 1000000007
+using namespace std;
+const ll sz = 1000007;
+ll fre[sz];
+void update(ll idx, ll val){
+    while( idx > 0){
+        fre[idx] += val;
+        idx -= (idx&-idx);
+    }
+}
+ll query(ll idx){
+    ll ans = 0;
+    while(idx < sz){
+        ans += fre[idx];
+        idx += (idx&-idx);
+    }
+    return ans;
+}
+int main()
+{
+    FAST;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int ar[n+1];
+        for(int i=1;i<=n;i++){
+            cin>>ar[i];
+        }
+        ll anss=0;
+        for(int i=0;i<sz;i++){
+            fre[i]=0;
+        }
+        for(int i=n;i>=1;i--){
+            if(ar[i]==0){
+                continue;
+            }
+            anss += ar[i]*query(ar[i]+1);
+            update(ar[i], 1);
+        }
+        cout<<anss<<endl;
+    }
+    return 0;
+}
