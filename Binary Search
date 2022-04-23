@@ -1,11 +1,44 @@
-       while(l<=r)
-       {
-           int m=l+(r - l)/2;
- 
-           if(ar[m] <= p){
-               l = m + 1;
-           }
-           else{
-               r = m - 1;
-           }
-       }
+#include<bits/stdc++.h>
+using namespace std;
+
+long long int fun(long long int n){
+
+    long long int val = 5, ans = 0 ;
+    while(val<=n){
+        ans+=(n/val);
+        val = val*5;
+    }
+
+    return ans;
+}
+
+
+int main()
+{
+    int t,tc=0;
+    cin>>t;
+    while(t--)
+    {
+        int q;
+        cin>>q;
+        long long l=1, h=1e10,m;
+        while(l<=h){
+            m = (l+h)/2;
+
+            if(fun(m)<q){
+                l = m+1;
+            }
+            else {
+                h = m-1;
+            }
+        }
+
+        if(fun(l)!=q){
+            cout<<"Case "<<++tc<<": impossible"<<endl;
+        }
+        else {
+            cout<<"Case "<<++tc<<": "<<l<<endl;
+        }
+    }
+
+}
