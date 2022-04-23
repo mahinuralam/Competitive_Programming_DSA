@@ -1,0 +1,101 @@
+#include<bits/stdc++.h>
+#define FAST ios_base::sync_with_stdio(false); cin.tie(0), cout.tie(0);
+#define ll long long
+#define MOD 1000000007
+//#define endl '\n'
+using namespace std;
+ 
+void init_code(){
+    FAST;
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output6.txt", "w", stdout);
+    #endif 
+}
+
+ll factorial(ll n)
+{
+    ll res = 1, i;
+    for (i = 2; i <= n; i++){
+        res = (res*i)%MOD;
+    }
+    return res;
+}
+
+// Function for extended Euclidean Algorithm
+ll gcdExtended(ll a, ll b, ll* x, ll* y);
+ 
+// Function to find modulo inverse of a
+ll modInverse(ll a, ll m)
+{
+    ll x, y;
+    ll g = gcdExtended(a, m, &x, &y);
+    if (g != 1){
+        //cout << "Inverse doesn't exist";
+        return 0;
+    }
+    else
+    {
+         
+        // m is added to handle negative x
+        ll res = (x % m + m) % m;
+        //cout << "Modular multiplicative inverse is " << res;
+        return res;
+    }
+}
+ 
+// Function for extended Euclidean Algorithm
+ll gcdExtended(ll a, ll b, ll* x, ll* y)
+{
+     
+    // Base Case
+    if (a == 0)
+    {
+        *x = 0, *y = 1;
+        return b;
+    }
+     
+    // To store results of recursive call
+    ll x1, y1;
+    ll gcd = gcdExtended(b % a, a, &x1, &y1);
+ 
+    // Update x and y using results of recursive
+    // call
+    *x = y1 - (b / a) * x1;
+    *y = x1;
+ 
+    return gcd;
+}
+
+int main()
+{
+    init_code();
+    ll n,w,t,r;
+    vector<ll> v;
+    cin>>n>>w>>t>>r;
+    v.push_back(w);
+    v.push_back(t);
+    v.push_back(r);
+
+    
+        
+       
+        ll sum = factorial(n);
+        for(int i=0;i<v.size();i++){
+            ll fact = factorial(v[i]);
+            ll inverse = modInverse(fact, MOD)%MOD;
+            //cout<<fact<<" "<<v[i]<<" inverse "<<inverse<<endl;
+            
+            sum = ( sum%MOD * inverse%MOD ) % MOD;
+        }
+
+        cout<<sum<<endl;
+        
+
+
+        
+    
+
+        
+    return 0;
+}
