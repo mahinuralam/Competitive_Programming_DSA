@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+#define FAST ios_base::sync_with_stdio(false); cin.tie(0), cout.tie(0);
+#define ll long long
+//#define endl '\n'
+using namespace std;
+ 
+void init_code(){
+    FAST;
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output6.txt", "w", stdout);
+    #endif 
+}
+
+// CPP Program to find the sum of Binomial
+// Coefficient.
+ 
+// Returns value of Binomial Coefficient Sum
+int binomialCoeffSum(int n)
+{
+    int C[n + 1][n + 1];
+ 
+    // Calculate value of Binomial Coefficient
+    // in bottom up manner
+    for (int i = 0; i <= n; i++) {
+        for (int j = 0; j <= min(i, n); j++) {
+            // Base Cases
+            if (j == 0 || j == i)
+                C[i][j] = 1;
+ 
+            // Calculate value using previously
+            // stored values
+            else
+                C[i][j] = C[i - 1][j - 1] + C[i - 1][j];
+        }
+    }
+ 
+    // Calculating the sum.
+    int sum = 0;
+    for (int i = 0; i <= n; i++)
+        sum += C[n][i];
+ 
+    return sum;
+}
+ 
+/* Driver program to test above function*/
+int main()
+{
+    init_code();
+    int n;
+    cin>>n;
+    //printf("%d", binomialCoeffSum(n));
+    ll sm1 = binomialCoeffSum(n);
+    //cout<<sm1<<" "<<sm2<<endl;
+    //cout<<sm1-sm2<<endl;
+    cout<<sm1-(n+1)<<endl;
+
+    return 0;
+}
