@@ -1,0 +1,14 @@
+void number_of_divisors(li n)
+{
+    //Number of divisors of every number between 1 to n
+    for(li i = 1; i*i <= n; i++)
+    {
+        for(li j = i*i; j <= n; j += i)
+        {
+            if(i*i == j)
+                a[j]++;
+            else
+                a[j] += 2;
+        }
+    }
+}
