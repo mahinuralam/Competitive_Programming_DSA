@@ -1,0 +1,30 @@
+vector<int>v[lx];
+vector<int>cost[lx];
+int dis[lx];
+
+void dijkstra(int source)
+{
+	memset(dis, 1e9, sizeof(dis));
+	priority_queue<pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > >pq;
+	dis[source] = 0;
+	pq.push(make_pair(0, source));
+	
+	while(!pq.empty())
+	{
+		int dist = pq.top().first;
+		int prev = pq.top().second;
+		pq.top();
+		
+		for(int i=0; i<v[prev].size(); i++)
+		{
+			int x = v[prev][i];
+			int c = cost[prev][i];
+			
+			if(dis[x] > dis[prev]+c)
+			{
+				dis[x] = dis[prev]+c;
+				pq.push(make_pair(dis[x], x));
+			}
+		}
+	}
+}
