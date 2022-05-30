@@ -1,14 +1,16 @@
-void number_of_divisors(li n)
+Number of Divisor from 1 to n void number_of_divisors(int n)
 {
-    //Number of divisors of every number between 1 to n
-    for(li i = 1; i*i <= n; i++)
+    // Number of divisors of every number between 1 to n
+    for (int i = 1; i * i <= n; i++)
     {
-        for(li j = i*i; j <= n; j += i)
+        for (int j = i * i; j <= n; j += i)
         {
-            if(i*i == j)
+            if (i * i == j)
                 a[j]++;
             else
                 a[j] += 2;
         }
     }
 }
+
+Note : When we find the remainder of a % m, the answer will their GCD(Greatest Common Divisor).So, a % m = GCD(a, m) If n = p_1 ^ (a_1)X p_2 ^ (a_2)X p_3 ^ (a_3)X..……….X p_n ^ (a_n), then number of divisor of n will be Number of divisors = (a_1 + 1)(a_2 + 1)(a_3 + 1)…….(a_n + 1).Here p_1, p_2, p_3 are prime numbers and a_1, a_2, a_3 are their power.
