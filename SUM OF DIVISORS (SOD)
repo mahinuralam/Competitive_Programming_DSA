@@ -1,13 +1,16 @@
+Sum of Divisor from 1 to n 
+
 void sum_of_divisor()
 {
-    for(li i = 1; i * i <= 1e7; i++)
+    for (int i = 1; i * i <= n; i++)
     {
-        for(li j = i*i; j < 1e7; j += i)
+        for (int j = i * i; j < n; j += i)
         {
-            if(j == i*i)
+            if (j == i * i)
                 a[j] += i;
             else
-                a[j] += i+(j/i);
+                a[j] += I + (j / i);
         }
     }
 }
+
