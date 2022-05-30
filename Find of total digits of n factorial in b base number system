@@ -1,0 +1,18 @@
+Find of total digits of n factorial in b base number system 
+
+
+int digits_factorial(int n)
+{
+    if (n < 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    double digits = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        digits += log10(i);
+    }
+    double digits_2 = log10(b);
+    digits = digits / digits_2;
+    return floor(digits) + 1;
+}
