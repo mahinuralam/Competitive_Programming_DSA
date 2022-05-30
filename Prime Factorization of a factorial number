@@ -1,0 +1,26 @@
+Prime Factorization of a factorial number
+    You are given a number n.You have to express n !as a multiplication of some prime factorial.For example,
+    4 ! = 3 !x 2 !x 2 ! || 6 ! = 5 !x 3 ! || 8 ! = 7 !x 2 !x 2 !x 2 !
+    
+    
+int factorial_factorization(int n)
+{
+    for (int i = 2; i <= n; i++)
+    {
+        int a = i;
+        for (int j = 0; j < prime.size(); j++)
+        {
+            if (prime[j] > i)
+                break;
+            int cnt = 0;
+            while (a % prime[j] == 0)
+            {
+                a /= prime[j];
+                cnt++;
+            }
+            m[prime[j]] += cnt;
+        }
+    }
+}
+
+Note : Prime factorization of a factorial n means you have to do prime factorization of every number 1 to n.And the merge that.
