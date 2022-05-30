@@ -1,16 +1,20 @@
-Sum of Divisor from 1 to n 
+Find Euler Totient of every number from 1 to n int euler_phi[mxm];
 
-void sum_of_divisor()
+void Euler_Totient(int n)
 {
-    for (int i = 1; i * i <= n; i++)
+    // Euler Totient of number 1 to n
+    euler_phi[1] = 1;
+    for (int i = 2; i <= n; i++)
     {
-        for (int j = i * i; j < n; j += i)
+        if (euler_phi[i] > 0)
+            continue;
+        for (int j = i + i; j <= n; j += i)
         {
-            if (j == i * i)
-                a[j] += i;
-            else
-                a[j] += I + (j / i);
+            if (euler_phi[j] == 0)
+                euler_phi[j] = j;
+            euler_ph[j] -= (euler_phi[j] / i);
         }
     }
 }
 
+Note : Normally euler totient returns the amount of number which are co - prime with n.
