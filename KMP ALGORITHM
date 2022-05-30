@@ -1,0 +1,43 @@
+  KMP ALGORITHM
+1.	First I have to create a temporary lps array. It will helps us to identify suffix and prefix.
+The thing is we are trying find length of a substring which is suffix as well as prefix for every
+Index i.
+
+void Create_LPS(string t)
+{
+    int index = 0;
+    for (int j = 1; j < t.length();)
+    {
+        if (t[index] == t[j])
+        {
+            lps[j] = index + 1;
+            index++;
+            j++;
+        }
+        else
+        {
+            if (index != 0)
+                index = lps[index - 1];
+            else
+                lps[i] = index, j++;
+        }
+    }
+}
+
+bool kmp(string s, string t)
+{
+    int I = 0, j = 0;
+    ->Searching that whether string t is present on s or not .while (I < s.length())
+    {
+        if (s[i] == t[j])
+            i++, j++;
+        else
+        {
+            if (j != 0)
+                j = lps[j - 1];
+            else
+                i++;
+        }
+        if (j == t.length()) // pattern match
+    }
+}
