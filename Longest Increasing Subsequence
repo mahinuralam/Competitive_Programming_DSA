@@ -1,0 +1,13 @@
+int longest(int n)
+{
+	vector<int>v;
+	for(int i=1; i<=n; i++)
+	{
+		int pos = lower_bound(v.begin(), v.end(), a[i]) - v.begin();
+		
+		if(pos == v.size()) v.push_back(a[i]);
+		else v[pos] = a[i];
+	}
+	
+	return v.size();
+}
