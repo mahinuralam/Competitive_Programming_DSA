@@ -1,0 +1,17 @@
+int query(int node, int b, int e, int i, int j, int carry = 0)
+{
+    if (i > e || j < b)
+        return 0;
+
+    if (b >= i and e <= j)
+        return tree[node].sum + carry * (e - b + 1); //সাম এর সাথে যোগ হবে সেই রেঞ্জের সাথে অতিরিক্ত যত যোগ করতে বলেছে সেটা
+
+    int Left = node << 1;
+    int Right = (node << 1) + 1;
+    int mid = (b + e) >> 1;
+
+    int p1 = query(Left, b, mid, i, j, carry + tree[node].prop); //প্রপাগেট ভ্যালু বয়ে নিয়ে যাচ্ছে carry ভ্যারিয়েবল
+    int p2 = query(Right, mid + 1, e, i, j, carry + tree[node].prop);
+
+    return p1 + p2;
+}
