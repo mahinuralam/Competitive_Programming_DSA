@@ -1,3 +1,6 @@
+// A graph that cannot be colored with two different colors for every pair of nodes. 
+
+
 vector<ll>adj[10000];
 ll vis[10000],col[10000];
  
