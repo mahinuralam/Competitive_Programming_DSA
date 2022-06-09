@@ -3,6 +3,7 @@ using namespace std;
 typedef pair< int , int >PII;
 const int MAXN = 1e5+7;
 
+
 int bap[MAXN], sz[MAXN];
 int parent(int u) {
     if (u == bap[u]) return u;
