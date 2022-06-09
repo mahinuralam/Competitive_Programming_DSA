@@ -1,0 +1,28 @@
+const ll sz = 1e5 + 5;
+
+ll vis[sz];
+ll dfsVis[sz];
+vector<ll> adj[sz];
+
+bool dfs(int node)
+{
+    vis[node] = 1;
+    dfsVis[node] = 1;
+
+    for (int child : adj[node])
+    {
+        if (vis[child] == 0)
+        {
+            if (dfs(child) == true)
+            {
+                return true;
+            }
+        }
+        else if (dfsVis[child] == 1)
+        {
+            return true;
+        }
+    }
+    dfsVis[node] = 0;
+    return false;
+}
