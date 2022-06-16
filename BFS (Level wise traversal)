@@ -1,6 +1,9 @@
-    vector <int> v[10000] ;  
-    int level[10000]; 
-    bool vis[10000]; 
+    
+    const ll MXSZ = 1e6 + 7;
+    
+    vector <int> v[MXSZ] ;  
+    int level[MXSZ]; 
+    bool vis[MXSZ]; 
 
     void bfs(int s)
    {
