@@ -19,7 +19,7 @@
                     level[ v[ p ][ i ] ] = level[ p ]+1;                 
                      q.push(v[ p ][ i ]);
                      vis[ v[ p ][ i ] ] = true;
-     	    }
+     	        }
             }
         }
     }
