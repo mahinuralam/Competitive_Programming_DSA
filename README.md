@@ -1,2 +1,2 @@
-# CP-Algo-and-Ds
+# CP-Algo & Ds
 Competitive programming templates.
