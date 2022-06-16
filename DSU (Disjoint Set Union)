@@ -1,0 +1,33 @@
+typedef pair<int, int> PII;
+const int MAXN = 1e5 + 7;
+
+int bap[MAXN], sz[MAXN];
+int parent(int u)
+{
+    if (u == bap[u])
+        return u;
+    return parent(bap[u]);
+}
+
+bool unite(int u, int v)
+{
+    int cu = parent(u);
+    int cv = parent(v);
+    if (cu == cv)
+        return false;
+    if (sz[cu] < sz[cv])
+        swap(cu, cv);
+    bap[cv] = cu;
+    sz[cu] += sz[cv];
+    return true;
+}
+
+void init(ll n)
+{
+    // 0 base
+    for (int i = 0; i <= n; i++)
+    {
+        bap[i] = i;
+        sz[i] = 1;
+    }
+}
