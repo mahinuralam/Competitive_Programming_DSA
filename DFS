@@ -1,75 +1,15 @@
-#include<bits/stdc++.h>
-#define FAST ios_base::sync_with_stdio(false); cin.tie(0), cout.tie(0);
-#define ll long long
-//#define endl '\n'
-using namespace std;
- 
-void init_code(){
-    FAST;
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output6.txt", "w", stdout);
-    #endif 
-}
+const ll SZ 1e6 + 5;
+ll vis[SZ];
+vector<int> adj[SZ];
 
-#define MX 200005
-ll vis[MX];
-vector<int>adj[MX];
-ll edges[MX];
-vector<ll>in;
-
-void dfs(int u){
-    vis[u]=1;
-    in.push_back(u);
-    for(auto it:adj[u]){
-        if(vis[it]==0){
-            dfs(it);
+void dfs(int node)
+{
+    vis[node] = 1;
+    for (auto child : adj[node])
+    {
+        if (vis[child] == 0)
+        {
+            dfs(child);
         }
     }
-}
-
-int main()
-{
-    init_code();
-
-        int n,m,ans=0;
-        cin>>n>>m;
-
-        for(int i=0;i<m;i++){
-            int u,v;
-            cin>>u>>v;
-            u--,v--;
-            adj[u].push_back(v);
-            adj[v].push_back(u);
-            edges[u]++;
-            edges[v]++;
-        }
-
-        for(int i=1;i<=n;i++){
-
-            if(vis[i]==0){
-
-                in.clear();
-                dfs(i);
-                ll flag = 1;
-
-                for(int i=0;i<in.size();i++){
-                    if(edges[in[i]] != 2){
-                        flag = 0;
-                    }
-                }
-
-                if(flag == 1){
-                    ans++;
-                }
-            }
-        }
-
-        cout<<ans<<endl;
-
-
-
-
-
-
 }
