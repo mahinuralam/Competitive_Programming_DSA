@@ -1,0 +1,17 @@
+const ll SZ 1e6 + 5;
+ll vis[SZ];
+vector<int> adj[SZ];
+stack<ll> st;
+
+void topo(int node)
+{
+    vis[node] = 1;
+    for (auto child : adj[node])
+    {
+        if (vis[child] == 0)
+        {
+            dfs(child);
+        }
+    }
+    st.insert(node);
+}
